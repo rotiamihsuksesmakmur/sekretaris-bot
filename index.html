@@ -53,28 +53,71 @@
         .feature-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
         .feature-card p { font-size: 0.95rem; color: var(--text-muted); }
 
-        /* 4. INTERACTIVE SIMULATION */
-        .simulation-container { max-width: 700px; margin: 0 auto 60px; background: #fff; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        .chat-header { background: var(--primary); color: white; padding: 15px 20px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        .chat-body { padding: 20px; height: 350px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #f1f5f9; }
-        .msg { max-width: 80%; padding: 12px 16px; border-radius: 12px; font-size: 0.95rem; }
-        .msg-bot { background: white; border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 0; }
-        .msg-user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 0; }
-        .chat-controls { padding: 20px; background: white; border-top: 1px solid var(--border); }
-        .chat-controls p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; }
+        /* 4. INTERACTIVE SIMULATION (UPDATED) */
+        .simulation-container { max-width: 850px; margin: 0 auto 50px; background: #fff; border-radius: 16px; border: 1px solid var(--border); padding: 32px; box-shadow: 0 10px 25px -3px rgba(0,0,0,0.05); }
+        .simulation-container h2 { text-align: center; font-size: 1.8rem; margin-bottom: 24px; color: #0f172a; }
+        .tab-box { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
         .btn-scenario { 
-            display: inline-block; background: #e0e7ff; color: var(--primary); 
-            border: none; padding: 8px 15px; border-radius: 20px; 
-            margin: 0 5px 5px 0; cursor: pointer; font-size: 0.85rem; transition: background 0.2s;
+            background: #f1f5f9; color: #334155; 
+            border: 1px solid var(--border); padding: 10px 18px; border-radius: 8px; 
+            cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s ease;
         }
-        .btn-scenario:hover { background: #c7d2fe; }
-        .typing { display: flex; gap: 4px; align-items: center; padding: 15px 16px; }
+        .btn-scenario.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .btn-scenario:hover:not(.active) { background: #e2e8f0; }
+        
+        .chat-viewport { border: 1px solid var(--border); border-radius: 12px; padding: 24px; background: #f8fafc; min-height: 200px; display: flex; flex-direction: column; justify-content: center; }
+        .chat-inner { display: flex; flex-direction: column; gap: 16px; }
+        .msg { max-width: 85%; padding: 12px 18px; border-radius: 12px; font-size: 0.95rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+        .msg-user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 0; }
+        .msg-bot { background: white; border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 0; color: #334155; }
+        
+        .typing { display: flex; gap: 4px; align-items: center; padding: 12px 16px; width: fit-content; }
         .dot { width: 6px; height: 6px; background: #94a3b8; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
         .dot:nth-child(1) { animation-delay: -0.32s; }
         .dot:nth-child(2) { animation-delay: -0.16s; }
         @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
 
-        /* 5. FOOTER & CTA */
+        /* 5. DATABASE SECTION & TABLE (UPDATED STYLE) */
+        .db-section { margin-top: 60px; margin-bottom: 60px; }
+        .badge-db { 
+            display: inline-flex; align-items: center; gap: 6px; background: #d1fae5; color: #065f46; 
+            padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+            margin-bottom: 12px; border: 1px solid #34d399;
+        }
+        .db-title { font-size: 1.8rem; color: #0f172a; margin-bottom: 4px; }
+        .db-subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; }
+        
+        .filters-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+        .search-box { position: relative; flex: 1; max-width: 340px; }
+        .search-box span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 0.95rem; }
+        .search-box input { 
+            width: 100%; padding: 10px 14px 10px 38px; border: 1px solid #cbd5e1; border-radius: 8px; 
+            font-size: 0.9rem; color: #334155; outline: none; background: #f8fafc; transition: all 0.2s;
+        }
+        .search-box input:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        .count-badge { background: #e2e8f0; color: #475569; font-size: 0.85rem; font-weight: 600; padding: 8px 16px; border-radius: 8px; }
+
+        .table-container { width: 100%; overflow-x: auto; background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 16px 20px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        th { background-color: #f8fafc; color: #475569; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        td { font-size: 0.95rem; color: #334155; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background-color: #f8fafc; }
+        
+        .td-name { font-weight: 600; color: #0f172a; }
+        .badge-cat { background: #e2e8f0; color: #334155; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 550; }
+        .badge-rating { display: inline-flex; align-items: center; gap: 4px; background: #fef3c7; color: #d97706; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
+        .td-reviews { color: var(--text-muted); }
+        .td-phone { display: inline-flex; align-items: center; gap: 6px; color: #334155; }
+        .btn-maps { 
+            display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; color: var(--primary); 
+            border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; 
+            text-decoration: none; font-weight: 600; transition: background 0.2s;
+        }
+        .btn-maps:hover { background: #dbeafe; }
+
+        /* FOOTER & CTA */
         footer { text-align: center; padding: 60px 20px; background: white; border-top: 1px solid var(--border); }
         .cta-btn { 
             display: inline-block; background: #25D366; color: white; 
@@ -92,7 +135,7 @@
 </head>
 <body>
 
-    <!-- 1. HERO SECTION -->
+    <!-- HERO SECTION -->
     <header>
         <div class="avatar">👩‍💼</div>
         <div class="status-badge"><span>●</span> Status: Active & Ready 24/7</div>
@@ -101,7 +144,7 @@
     </header>
 
     <div class="container">
-        <!-- 2. PROBLEM & SOLUTION CARD -->
+        <!-- PROBLEM & SOLUTION CARD -->
         <h2 class="section-title">Mengapa Anda Butuh Sekretaris Bot?</h2>
         <div class="comparison-grid">
             <div class="card chaos-card">
@@ -122,7 +165,7 @@
             </div>
         </div>
 
-        <!-- 3. CORE CAPABILITIES -->
+        <!-- CORE CAPABILITIES -->
         <h2 class="section-title">Kemampuan Utama</h2>
         <div class="features-grid">
             <div class="card feature-card">
@@ -138,30 +181,65 @@
             <div class="card feature-card">
                 <div class="feature-icon">📂</div>
                 <h3>Human-in-the-Loop Organizer</h3>
-                <p>AI akan memindai file berceceran dan meminta *approval* Anda sebelum merapikannya ke dalam folder terstruktur.</p>
+                <p>AI akan memindai file berceceran dan meminta approval Anda sebelum merapikannya ke dalam folder terstruktur.</p>
             </div>
         </div>
 
         <!-- 4. INTERACTIVE SIMULATION -->
-        <h2 class="section-title">Lihat Aksinya</h2>
         <div class="simulation-container">
-            <div class="chat-header">
-                <span>Sekretaris Bot Terminal</span>
-                <span>⚙️</span>
+            <h2>Simulasi Kinerja Bot</h2>
+            <div class="tab-box">
+                <button class="btn-scenario active" id="scen-1" onclick="runSimulation(1, 'Tolong siapkan notulensi meeting evaluasi vendor tadi siang.', 'Berikut ringkasan rapat Google Meet: 3 poin kesepakatan utama telah dicatat dan 2 action item telah ditugaskan ke tim procurement. File notulen sudah tersimpan di Google Drive!')">Skenario: Notulen Rapat</button>
+                <button class="btn-scenario" id="scen-2" onclick="runSimulation(2, 'Kirimkan rincian agenda harian saya hari ini.', 'Hari ini Anda memiliki 3 tugas utama: 1. Review draft laporan bulanan (Deadline: 13:00), 2. Meeting klien (14:30), dan 3. Balas email vendor. Seluruh rincian reminder ini sudah terkirim ke email Anda!')">Skenario: Reminder Tugas</button>
+                <button class="btn-scenario" id="scen-3" onclick="runSimulation(3, 'Tolong rapikan file di dashboard saya.', 'Saya mendeteksi 24 file PDF dan dokumen yang berceceran. Saya telah mengelompokkannya ke draf folder. Mohon periksa email Anda dan klik <b>Approve</b> agar saya bisa langsung merapikannya.')">Skenario: Rapikan File</button>
             </div>
-            <div class="chat-body" id="chat-body">
-                <div class="msg msg-bot">Halo! Saya Sekretaris Bot. Ada yang bisa saya bantu hari ini?</div>
+            <div class="chat-viewport">
+                <div class="chat-inner" id="chat-inner">
+                    <!-- Default Initial Message -->
+                    <div class="msg msg-user">Tolong siapkan notulensi meeting evaluasi vendor tadi siang.</div>
+                    <div class="msg msg-bot">Berikut ringkasan rapat Google Meet: 3 poin kesepakatan utama telah dicatat dan 2 action item telah ditugaskan ke tim procurement. File notulen sudah tersimpan di Google Drive!</div>
+                </div>
             </div>
-            <div class="chat-controls">
-                <p>Coba salah satu skenario berikut:</p>
-                <button class="btn-scenario" onclick="runSimulation('Bisa tolong buatkan notulensi rapat tim tadi pagi?', 'Tentu! Notulensi rapat tim, poin diskusi, dan action items sudah saya rangkum. Saya baru saja mengirimkannya ke email Anda. Ada lagi yang perlu disiapkan?')">📝 Buat Notulen Rapat</button>
-                <button class="btn-scenario" onclick="runSimulation('Apa saja tugas saya yang harus selesai hari ini?', 'Hari ini Anda memiliki 3 tugas utama: <br>1. Review draft laporan bulanan (Deadline: 13:00) <br>2. Meeting klien (14:30) <br>3. Balas email vendor. <br><br>Saya sudah mengirimkan reminder lengkap ke inbox Anda.')">🗓️ Cek Tugas Harian</button>
-                <button class="btn-scenario" onclick="runSimulation('Tolong rapikan file di folder Unduhan saya.', 'Saya mendeteksi 24 file PDF dan Dokumen yang berceceran. Saya telah membuat draf struktur foldernya. Mohon periksa email Anda dan klik <b>Approve</b> agar saya bisa mengeksekusi pemindahan file tersebut.')">📁 Rapikan File</button>
+        </div>
+
+        <!-- 5. DATABASE SECTION (UPDATED) -->
+        <div class="db-section">
+            <div class="badge-db"><span>●</span> Database Terhubung (Supabase)</div>
+            <h2 class="db-title">Daftar Rekomendasi Tempat</h2>
+            <p class="db-subtitle">Data tempat dan mitra yang tersinkronisasi otomatis langsung dari database Supabase.</p>
+            
+            <div class="filters-row">
+                <div class="search-box">
+                    <span>🔍</span>
+                    <input type="text" id="search-input" onkeyup="filterPlaces()" placeholder="Cari nama, kota, kategori...">
+                </div>
+                <div class="count-badge"><span id="place-count">0</span> tempat</div>
+            </div>
+
+            <div class="table-container">
+                <table id="places">
+                  <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Kategori</th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>Kota</th>
+                        <th>Telepon</th>
+                        <th>Maps</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 30px;">Memuat data...</td>
+                    </tr>
+                  </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <!-- 5. FOOTER & CTA -->
+    <!-- FOOTER & CTA -->
     <footer>
         <a href="https://wa.me/6281299992919" target="_blank" class="cta-btn">💬 Hubungi Saya di WhatsApp</a>
         <p class="footer-note">Built with AI · AI Builder Bootcamp Showcase</p>
@@ -169,40 +247,166 @@
 
     <!-- JAVASCRIPT FOR SIMULATION -->
     <script>
-        const chatBody = document.getElementById('chat-body');
+        const chatInner = document.getElementById('chat-inner');
         let isTyping = false;
 
-        function runSimulation(userMessage, botResponse) {
-            if (isTyping) return; // Prevent clicking while typing
+        function runSimulation(scenIndex, userMessage, botResponse) {
+            if (isTyping) return; 
             isTyping = true;
 
-            // Add user message
+            // Update Tab Active Status
+            document.querySelectorAll('.btn-scenario').forEach((btn, i) => {
+                btn.classList.toggle('active', i + 1 === scenIndex);
+            });
+
+            // Clear conversation
+            chatInner.replaceChildren();
+
+            // Append User Message
             const userDiv = document.createElement('div');
             userDiv.className = 'msg msg-user';
             userDiv.textContent = userMessage;
-            chatBody.appendChild(userDiv);
-            chatBody.scrollTop = chatBody.scrollHeight;
+            chatInner.appendChild(userDiv);
 
-            // Add typing indicator
+            // Typing Indicator
             const typingDiv = document.createElement('div');
             typingDiv.className = 'msg msg-bot typing';
             typingDiv.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+            
             setTimeout(() => {
-                chatBody.appendChild(typingDiv);
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 500);
+                chatInner.appendChild(typingDiv);
+            }, 400);
 
-            // Bot response after 2 seconds
+            // Bot response after 1.8 seconds
             setTimeout(() => {
-                chatBody.removeChild(typingDiv);
+                chatInner.removeChild(typingDiv);
                 const botDiv = document.createElement('div');
                 botDiv.className = 'msg msg-bot';
                 botDiv.innerHTML = botResponse;
-                chatBody.appendChild(botDiv);
-                chatBody.scrollTop = chatBody.scrollHeight;
+                chatInner.appendChild(botDiv);
                 isTyping = false;
-            }, 2000);
+            }, 1800);
         }
+    </script>
+
+    <!-- JAVASCRIPT FOR SUPABASE -->
+    <script>
+        const SUPABASE_URL = 'https://vzkughztfnaervxakwce.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_pkP1VTpbieopyjnv1-eZ6Q_riaoceId';
+
+        let allPlaces = [];
+
+        async function loadPlaces() {
+            try {
+                const res = await fetch(
+                    SUPABASE_URL + '/rest/v1/places?select=*&order=reviews_count.desc.nullslast&limit=100',
+                    { headers: { apikey: SUPABASE_KEY } }
+                );
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                allPlaces = await res.json();
+                renderTable(allPlaces);
+            } catch (e) {
+                const tbody = document.querySelector('#places tbody');
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: red; padding: 30px;">Gagal memuat data. Periksa koneksi Anda.</td></tr>';
+                console.error(e);
+            }
+        }
+
+        function renderTable(data) {
+            const tbody = document.querySelector('#places tbody');
+            tbody.replaceChildren();
+            
+            document.getElementById('place-count').textContent = data.length + ' tempat';
+
+            for (const p of data) {
+                const tr = document.createElement('tr');
+
+                // 1. Nama
+                const tdName = document.createElement('td');
+                tdName.className = 'td-name';
+                tdName.textContent = p.title ?? '-';
+                tr.appendChild(tdName);
+
+                // 2. Kategori
+                const tdCat = document.createElement('td');
+                if (p.category_name) {
+                    const span = document.createElement('span');
+                    span.className = 'badge-cat';
+                    span.textContent = p.category_name;
+                    tdCat.appendChild(span);
+                } else {
+                    tdCat.textContent = '-';
+                }
+                tr.appendChild(tdCat);
+
+                // 3. Rating
+                const tdRate = document.createElement('td');
+                if (p.total_score) {
+                    const span = document.createElement('span');
+                    span.className = 'badge-rating';
+                    span.innerHTML = `★ ${p.total_score}`;
+                    tdRate.appendChild(span);
+                } else {
+                    tdRate.textContent = '-';
+                }
+                tr.appendChild(tdRate);
+
+                // 4. Review
+                const tdRev = document.createElement('td');
+                tdRev.className = 'td-reviews';
+                tdRev.textContent = p.reviews_count ?? '-';
+                tr.appendChild(tdRev);
+
+                // 5. Kota
+                const tdCity = document.createElement('td');
+                tdCity.textContent = p.city ?? '-';
+                tr.appendChild(tdCity);
+
+                // 6. Telepon
+                const tdTel = document.createElement('td');
+                if (p.phone) {
+                    tdTel.className = 'td-phone';
+                    tdTel.innerHTML = `📞 ${p.phone}`;
+                } else {
+                    tdTel.textContent = '-';
+                }
+                tr.appendChild(tdTel);
+
+                // 7. Maps
+                const tdMap = document.createElement('td');
+                if (p.url && p.url.startsWith('https://')) {
+                    const a = document.createElement('a');
+                    a.href = p.url;
+                    a.className = 'btn-maps';
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.innerHTML = 'Maps ↗';
+                    tdMap.appendChild(a);
+                } else {
+                    tdMap.textContent = '-';
+                }
+                tr.appendChild(tdMap);
+
+                tbody.appendChild(tr);
+            }
+
+            if (!data.length) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 30px; color: var(--text-muted);">Tidak ditemukan hasil yang cocok.</td></tr>';
+            }
+        }
+
+        function filterPlaces() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const filtered = allPlaces.filter(p => {
+                const title = (p.title || '').toLowerCase();
+                const category = (p.category_name || '').toLowerCase();
+                const city = (p.city || '').toLowerCase();
+                return title.includes(query) || category.includes(query) || city.includes(query);
+            });
+            renderTable(filtered);
+        }
+
+        loadPlaces();
     </script>
 </body>
 </html>
